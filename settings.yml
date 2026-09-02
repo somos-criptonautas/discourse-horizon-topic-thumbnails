@@ -1,0 +1,13 @@
+thumbnail_size:
+  default: 150
+
+mobile_thumbnails:
+  default: false
+
+placeholder_icon:
+  default: "comments"
+
+enabled_categories:
+  type: list
+  list_type: category
+  default: ""

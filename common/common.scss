@@ -1,0 +1,78 @@
+// Horizon's high context layout renders the whole card as a single
+// <td class="hc-topic-card">. We register a sibling column before it, so the
+// thumbnail is a real <td> in the same <tr> and lays out in flow -- no absolute
+// positioning, no reserved gutter.
+
+.topic-list-item.--high-context:has(> .htt-thumbnail-cell) {
+  // Horizon already switches this row to flex while bulk selecting, so the card
+  // is known to survive it.
+  display: flex;
+  align-items: stretch;
+
+  > .hc-topic-card__bulk-select {
+    order: 0;
+  }
+
+  > .htt-thumbnail-cell {
+    order: 1;
+  }
+
+  > .hc-topic-card {
+    order: 2;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+.htt-thumbnail-cell {
+  flex: 0 0 var(--htt-size, 150px);
+  // never let the image crowd out the card on a narrow screen
+  max-width: 40%;
+  overflow: hidden;
+  background: var(--primary-very-low);
+
+  // Match the card's rounded leading edge. Rounding the cell rather than
+  // clipping the row keeps the card's own overflow behaviour intact.
+  border-start-start-radius: var(--d-border-radius-large, 0.75rem);
+  border-end-start-radius: var(--d-border-radius-large, 0.75rem);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &.htt-empty {
+    display: none;
+  }
+}
+
+.htt-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--primary-medium);
+
+  .d-icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
+}
+
+// Horizon's `sm` breakpoint is 40rem (lib/breakpoints.scss). Below it the card
+// drops its radius and goes edge-to-edge, so match that exactly -- an off-by-one
+// breakpoint here leaves a band where the two stylesheets disagree.
+// Only reachable when `mobile_thumbnails` is on; the column is not registered
+// on mobile otherwise.
+@media (width < 40rem) {
+  .topic-list-item.--high-context {
+    --htt-size: 72px;
+  }
+
+  .htt-thumbnail-cell {
+    border-radius: 0;
+  }
+}

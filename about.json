@@ -1,0 +1,15 @@
+{
+  "name": "Horizon Topic Thumbnails",
+  "component": true,
+  "license_url": null,
+  "about_url": null,
+  "modifiers": {
+    "topic_thumbnail_sizes": [
+      [100, 100],
+      [150, 150],
+      [200, 200],
+      [300, 300],
+      [400, 400]
+    ]
+  }
+}
