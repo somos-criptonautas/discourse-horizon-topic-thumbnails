@@ -24,6 +24,15 @@
   }
 }
 
+// In a category the component is enabled for, the thumbnail carries the visual
+// weight and the excerpt just crowds the card. Keyed on `.htt-scoped` rather than
+// the cell being visible, so rows without an image stay consistent with the rest.
+.topic-list-item.--high-context:has(> .htt-thumbnail-cell.htt-scoped) {
+  .hc-topic-card .topic-excerpt {
+    display: none;
+  }
+}
+
 .htt-thumbnail-cell {
   flex: 0 0 var(--htt-size, 240px);
   // never let the image crowd out the card on a narrow screen
@@ -57,8 +66,8 @@
   color: var(--primary-medium);
 
   .d-icon {
-    width: 1.5em;
-    height: 1.5em;
+    width: 3em;
+    height: 3em;
   }
 }
 

@@ -33,7 +33,11 @@ class ThumbnailCell extends Component {
   }
 
   <template>
-    <td class="htt-thumbnail-cell {{if this.isEmpty 'htt-empty'}}">
+    <td
+      class="htt-thumbnail-cell
+        {{if this.isEmpty 'htt-empty'}}
+        {{if this.inScope 'htt-scoped'}}"
+    >
       {{#if this.isEmpty}}
         {{! nothing }}
       {{else if this.image}}

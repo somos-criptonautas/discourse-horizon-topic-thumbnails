@@ -90,6 +90,11 @@ Out-of-scope cells render as `.htt-empty` (`display: none`), and the row only
 becomes a flex container when a visible cell is present, so a scoped-out list is
 laid out exactly as stock Horizon.
 
+In-scope cells also carry `.htt-scoped`, whether or not the topic has an image.
+That is what hides `.topic-excerpt` across an enabled category -- keying it on
+scope rather than on the cell being visible keeps imageless rows consistent with
+the rest of the list.
+
 **Subcategories are not implied.** Listing a parent category does not enable its
 children; add each subcategory explicitly. (If you want parents to cascade, that is
 a two-line change in `enabledForCategory`.)
