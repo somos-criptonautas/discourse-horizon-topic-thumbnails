@@ -25,7 +25,7 @@
 }
 
 .htt-thumbnail-cell {
-  flex: 0 0 var(--htt-size, 150px);
+  flex: 0 0 var(--htt-size, 240px);
   // never let the image crowd out the card on a narrow screen
   max-width: 40%;
   overflow: hidden;
@@ -63,16 +63,21 @@
 }
 
 // Horizon's `sm` breakpoint is 40rem (lib/breakpoints.scss). Below it the card
-// drops its radius and goes edge-to-edge, so match that exactly -- an off-by-one
-// breakpoint here leaves a band where the two stylesheets disagree.
-// Only reachable when `mobile_thumbnails` is on; the column is not registered
-// on mobile otherwise.
+// drops its radius and runs edge to edge, and squeezing it into a narrower row
+// breaks its full-bleed footer. So don't squeeze it: turn the row into a column
+// and the thumbnail becomes a full-width banner above a full-width card.
+// `--htt-size` is the flex-basis either way, so here it is the banner's height.
 @media (width < 40rem) {
   .topic-list-item.--high-context {
-    --htt-size: 72px;
+    --htt-size: 140px;
+  }
+
+  .topic-list-item.--high-context:has(> .htt-thumbnail-cell) {
+    flex-direction: column;
   }
 
   .htt-thumbnail-cell {
+    max-width: none;
     border-radius: 0;
   }
 }

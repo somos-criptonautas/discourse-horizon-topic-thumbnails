@@ -1,8 +1,8 @@
 thumbnail_size:
-  default: 150
+  default: 240
 
 mobile_thumbnails:
-  default: false
+  default: true
 
 placeholder_icon:
   default: "comments"

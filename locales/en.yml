@@ -3,6 +3,6 @@ en:
     description: "Adds topic thumbnails to Horizon's high context topic cards."
     settings:
       thumbnail_size: "Width of the thumbnail column, in pixels. The image fills the height of the card and is cropped to fit."
-      mobile_thumbnails: "Show thumbnails on mobile. Off by default: Horizon's mobile card runs edge to edge with a scrolling tag strip, and does not take well to a narrower row."
+      mobile_thumbnails: "Show thumbnails on mobile, as a full-width banner above the card."
       placeholder_icon: "Icon shown for topics with no image, so every card keeps the same layout. Leave empty to let those cards run full width."
       enabled_categories: "Show thumbnails only while browsing these categories. Leave empty for every topic list. Subcategories are not included automatically."

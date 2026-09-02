@@ -49,24 +49,28 @@ may show the placeholder for a while before their images appear.
 | Setting | Default | |
 |---|---|---|
 | `thumbnail_size` | `150` | Width of the thumbnail column in px; the image fills the card's height and is cropped to fit. |
-| `mobile_thumbnails` | `false` | Show thumbnails on mobile. See below. |
+| `mobile_thumbnails` | `true` | Show thumbnails on mobile, as a full-width banner. See below. |
 | `placeholder_icon` | `comments` | Icon for topics with no image, so cards keep a uniform width. Any icon name works. Leave empty and those cards run full width instead. |
 | `enabled_categories` | *(empty)* | Show thumbnails only while browsing these categories. Empty = every topic list. |
 
 ### Mobile
 
-**Off by default.** Horizon forces its desktop column layout on mobile for card
-contexts, so the thumbnail column would otherwise render on phones -- but the
-mobile card is deliberately edge-to-edge (`padding: var(--space-4) 0`, a full-bleed
-footer with a gradient overlay, and a horizontally scrolling tag strip), and none
-of that survives being squeezed into a narrower row.
+Horizon forces its desktop column layout on mobile for card contexts, so the
+thumbnail column renders on phones too. Its mobile card is deliberately edge to
+edge -- `padding: var(--space-4) 0`, a full-bleed footer with a gradient overlay,
+a horizontally scrolling tag strip -- and none of that survives being squeezed
+into a narrower row.
 
-The gate is in JS, not CSS: on mobile the column is never registered, so there is
-no extra `<td>` and the row is left exactly as Horizon renders it.
+So don't squeeze it. Below Horizon's `sm` breakpoint (40rem) the row flips to
+`flex-direction: column`: the thumbnail becomes a full-width banner and the card
+gets the whole row width back, exactly as Horizon draws it. That is the entire
+mobile treatment -- one property, no second layout to maintain.
 
-Turning `mobile_thumbnails` on gives a 72px thumbnail below Horizon's `sm`
-breakpoint (40rem). Expect the card footer to sit oddly, since its full-bleed
-treatment assumes the card spans the whole row.
+`--htt-size` is the cell's flex-basis in both directions, so it is the column
+width on desktop and the banner height on mobile (140px).
+
+Set `mobile_thumbnails` to false to skip it: the gate is in JS, so the column is
+never registered and the row is left byte-identical to stock Horizon.
 
 ### Category scoping
 
