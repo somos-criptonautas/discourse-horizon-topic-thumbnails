@@ -3,7 +3,7 @@
 // thumbnail is a real <td> in the same <tr> and lays out in flow -- no absolute
 // positioning, no reserved gutter.
 
-.topic-list-item.--high-context:has(> .htt-thumbnail-cell) {
+.topic-list-item.--high-context:has(> .htt-thumbnail-cell:not(.htt-empty)) {
   // Horizon already switches this row to flex while bulk selecting, so the card
   // is known to survive it.
   display: flex;
@@ -72,7 +72,7 @@
     --htt-size: 140px;
   }
 
-  .topic-list-item.--high-context:has(> .htt-thumbnail-cell) {
+  .topic-list-item.--high-context:has(> .htt-thumbnail-cell:not(.htt-empty)) {
     flex-direction: column;
   }
 

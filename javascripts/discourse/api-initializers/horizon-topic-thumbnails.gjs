@@ -1,4 +1,5 @@
 import Component from "@glimmer/component";
+import { service } from "@ember/service";
 import { apiInitializer } from "discourse/lib/api";
 import dIcon from "discourse/ui-kit/helpers/d-icon";
 import {
@@ -10,19 +11,32 @@ import {
 const ENABLED_CATEGORIES = parseCategoryIds(settings.enabled_categories);
 
 class ThumbnailCell extends Component {
+  @service discovery;
+
   get image() {
     return pickThumbnail(this.args.topic?.thumbnails);
   }
 
-  // No image and no placeholder icon: collapse the cell so the card runs the
+  // Category scoping is decided here, per render, not when the column is
+  // registered: core builds the `topic-list-columns` context from
+  // `topicTrackingState.filterCategory` (often undefined) and caches the
+  // resolved columns per list instance, so it does not see a route change.
+  // `discovery.category` is the route's actual category.
+  get inScope() {
+    return enabledForCategory(this.discovery.category?.id, ENABLED_CATEGORIES);
+  }
+
+  // Out of scope, or nothing to show: collapse the cell so the card runs the
   // full width of the row.
   get isEmpty() {
-    return !this.image && !settings.placeholder_icon;
+    return !this.inScope || (!this.image && !settings.placeholder_icon);
   }
 
   <template>
     <td class="htt-thumbnail-cell {{if this.isEmpty 'htt-empty'}}">
-      {{#if this.image}}
+      {{#if this.isEmpty}}
+        {{! nothing }}
+      {{else if this.image}}
         <img
           src={{this.image.src}}
           width={{this.image.width}}
@@ -50,7 +64,7 @@ export default apiInitializer((api) => {
 
   api.registerValueTransformer(
     "topic-list-columns",
-    ({ value: columns, context }) => {
+    ({ value: columns }) => {
       // Horizon forces the desktop column layout on mobile for card contexts, so
       // this column would otherwise render on phones too. Its edge-to-edge mobile
       // card (full-bleed footer, horizontally scrolling tag strip) does not
@@ -63,10 +77,6 @@ export default apiInitializer((api) => {
       // (suggested / related lists) and non-Horizon themes never match, so we
       // never render a stray cell.
       if (!columns.has("high-context-card")) {
-        return columns;
-      }
-
-      if (!enabledForCategory(context.category?.id, ENABLED_CATEGORIES)) {
         return columns;
       }
 

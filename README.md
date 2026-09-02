@@ -79,6 +79,17 @@ Scoping is **list-level**, matching the official component: with
 categories and nowhere else -- `/latest` and `/top` have no category and are
 excluded.
 
+The check reads `discovery.category` from the cell at render time, *not*
+`context.category` in the `topic-list-columns` transformer. Two reasons that
+transformer cannot do it: core builds its context from
+`topicTrackingState.filterCategory`, which is not the route's category and is
+often undefined, and `TopicList#columns` is `@cached`, so the resolved column
+set does not rebuild when you navigate between categories.
+
+Out-of-scope cells render as `.htt-empty` (`display: none`), and the row only
+becomes a flex container when a visible cell is present, so a scoped-out list is
+laid out exactly as stock Horizon.
+
 **Subcategories are not implied.** Listing a parent category does not enable its
 children; add each subcategory explicitly. (If you want parents to cascade, that is
 a two-line change in `enabledForCategory`.)
