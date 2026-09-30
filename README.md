@@ -1,5 +1,7 @@
 # Horizon Topic Thumbnails
 
+**ENGLISH** | [ESPAÑOL](README.es.md)
+
 Adds topic thumbnails to Horizon's **high context topic cards**, on the left of the
 card, without forking or editing the Horizon theme.
 
@@ -120,3 +122,9 @@ Depends on three Horizon names: the column key `high-context-card`, and the clas
 `--high-context` and `.hc-topic-card`. If Horizon renames any of them, thumbnails
 silently stop rendering -- the card itself is unaffected. Fix is a rename in
 `api-initializers/horizon-topic-thumbnails.gjs` and `common/common.scss`.
+
+## License
+
+GPL-3.0. See [LICENSE](LICENSE).
+
+Text of this README under [CC BY-NC-SA 4.0](CC-BY-NC-SA-4.0.txt).
