@@ -13,14 +13,16 @@
     order: 0;
   }
 
-  > .htt-thumbnail-cell {
-    order: 1;
-  }
-
   > .hc-topic-card {
-    order: 2;
+    order: 1;
     flex: 1 1 auto;
     min-width: 0;
+  }
+
+  // Trailing edge: the thumbnail sits after the card. Flip both `order` values
+  // back (cell 1, card 2) to put it on the left again.
+  > .htt-thumbnail-cell {
+    order: 2;
   }
 }
 
@@ -40,10 +42,10 @@
   overflow: hidden;
   background: var(--primary-very-low);
 
-  // Match the card's rounded leading edge. Rounding the cell rather than
+  // Match the card's rounded trailing edge. Rounding the cell rather than
   // clipping the row keeps the card's own overflow behaviour intact.
-  border-start-start-radius: var(--d-border-radius-large, 0.75rem);
-  border-end-start-radius: var(--d-border-radius-large, 0.75rem);
+  border-start-end-radius: var(--d-border-radius-large, 0.75rem);
+  border-end-end-radius: var(--d-border-radius-large, 0.75rem);
 
   img {
     display: block;
@@ -83,6 +85,11 @@
 
   .topic-list-item.--high-context:has(> .htt-thumbnail-cell:not(.htt-empty)) {
     flex-direction: column;
+
+    // `order` is the cross-axis order once stacked, so keep the banner on top.
+    > .htt-thumbnail-cell {
+      order: 0;
+    }
   }
 
   .htt-thumbnail-cell {

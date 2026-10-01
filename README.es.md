@@ -2,7 +2,7 @@
 
 [ENGLISH](README.md) | **ESPAÑOL**
 
-Añade miniaturas de tema a las **tarjetas de tema de alto contexto** de Horizon, a la izquierda de la
+Añade miniaturas de tema a las **tarjetas de tema de alto contexto** de Horizon, al final de la
 tarjeta, sin bifurcar ni editar el tema Horizon.
 
 ## Cómo funciona
@@ -18,7 +18,8 @@ columns.add("htt-thumbnail", { item: ThumbnailCell }, { before: "high-context-ca
 ```
 
 Eso da un `<td>` real hermano de la tarjeta, y la fila se maqueta como un contenedor
-flex: miniatura a la izquierda, tarjeta a la derecha, sin posicionamiento absoluto.
+flex: primero la tarjeta y después la miniatura, sin posicionamiento absoluto.
+Intercambia los dos valores de `order` en `common/common.scss` para ponerla a la izquierda.
 
 `about.json` declara `modifiers.topic_thumbnail_sizes`, que es lo que hace que el
 servidor serialice `topic.thumbnails` en absoluto. El componente muestra entonces

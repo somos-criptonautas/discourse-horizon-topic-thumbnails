@@ -2,8 +2,8 @@
 
 **ENGLISH** | [ESPAÑOL](README.es.md)
 
-Adds topic thumbnails to Horizon's **high context topic cards**, on the left of the
-card, without forking or editing the Horizon theme.
+Adds topic thumbnails to Horizon's **high context topic cards**, on the trailing edge
+of the card, without forking or editing the Horizon theme.
 
 ## How it works
 
@@ -18,7 +18,8 @@ columns.add("htt-thumbnail", { item: ThumbnailCell }, { before: "high-context-ca
 ```
 
 That gives a real `<td>` sibling of the card, and the row is laid out as a flex
-container -- thumbnail left, card right, no absolute positioning.
+container -- card first, thumbnail after it, no absolute positioning.
+Swap the two `order` values in `common/common.scss` to put it on the left instead.
 
 `about.json` declares `modifiers.topic_thumbnail_sizes`, which is what makes the
 server serialize `topic.thumbnails` at all. The component then displays
