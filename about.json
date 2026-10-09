@@ -1,8 +1,8 @@
 {
   "name": "Horizon Topic Thumbnails",
   "component": true,
-  "license_url": null,
-  "about_url": null,
+  "license_url": "https://github.com/somos-criptonautas/discourse-horizon-topic-thumbnails/blob/main/LICENSE",
+  "about_url": "https://github.com/somos-criptonautas/discourse-horizon-topic-thumbnails",
   "modifiers": {
     "topic_thumbnail_sizes": [
       [100, 100],
