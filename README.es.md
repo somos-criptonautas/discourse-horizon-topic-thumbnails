@@ -53,7 +53,7 @@ pueden mostrar el marcador de posición un tiempo antes de que aparezcan sus im�
 
 | Ajuste | Por defecto | |
 |---|---|---|
-| `thumbnail_size` | `150` | Ancho de la columna de miniatura en px; la imagen ocupa toda la altura de la tarjeta y se recorta para ajustarse. |
+| `thumbnail_size` | `240` | Ancho de la columna de miniatura en px; la imagen ocupa toda la altura de la tarjeta y se recorta para ajustarse. |
 | `mobile_thumbnails` | `true` | Muestra miniaturas en móvil, como un banner de ancho completo. Ver más abajo. |
 | `placeholder_icon` | `comments` | Icono para temas sin imagen, para que las tarjetas mantengan un ancho uniforme. Sirve cualquier nombre de icono. Si se deja vacío, esas tarjetas ocupan el ancho completo. |
 | `enabled_categories` | *(vacío)* | Muestra miniaturas solo al navegar estas categorías. Vacío = todas las listas de temas. |

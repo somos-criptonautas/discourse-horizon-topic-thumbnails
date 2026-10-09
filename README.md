@@ -53,7 +53,7 @@ may show the placeholder for a while before their images appear.
 
 | Setting | Default | |
 |---|---|---|
-| `thumbnail_size` | `150` | Width of the thumbnail column in px; the image fills the card's height and is cropped to fit. |
+| `thumbnail_size` | `240` | Width of the thumbnail column in px; the image fills the card's height and is cropped to fit. |
 | `mobile_thumbnails` | `true` | Show thumbnails on mobile, as a full-width banner. See below. |
 | `placeholder_icon` | `comments` | Icon for topics with no image, so cards keep a uniform width. Any icon name works. Leave empty and those cards run full width instead. |
 | `enabled_categories` | *(empty)* | Show thumbnails only while browsing these categories. Empty = every topic list. |
