@@ -66,33 +66,30 @@ export default apiInitializer((api) => {
     `${parseInt(settings.thumbnail_size, 10)}px`
   );
 
-  api.registerValueTransformer(
-    "topic-list-columns",
-    ({ value: columns }) => {
-      // Horizon forces the desktop column layout on mobile for card contexts, so
-      // this column would otherwise render on phones too. Its edge-to-edge mobile
-      // card (full-bleed footer, horizontally scrolling tag strip) does not
-      // survive being squeezed into a narrower row, so stay out by default.
-      if (site.mobileView && !settings.mobile_thumbnails) {
-        return columns;
-      }
-
-      // Only Horizon's high context layout registers this column. Simple cards
-      // (suggested / related lists) and non-Horizon themes never match, so we
-      // never render a stray cell.
-      if (!columns.has("high-context-card")) {
-        return columns;
-      }
-
-      // Column items render as direct children of the <tr>, so this lands as a
-      // real sibling of Horizon's <td class="hc-topic-card">.
-      columns.add(
-        "htt-thumbnail",
-        { item: ThumbnailCell },
-        { before: "high-context-card" }
-      );
-
+  api.registerValueTransformer("topic-list-columns", ({ value: columns }) => {
+    // Horizon forces the desktop column layout on mobile for card contexts, so
+    // this column would otherwise render on phones too. Its edge-to-edge mobile
+    // card (full-bleed footer, horizontally scrolling tag strip) does not
+    // survive being squeezed into a narrower row, so stay out by default.
+    if (site.mobileView && !settings.mobile_thumbnails) {
       return columns;
     }
-  );
+
+    // Only Horizon's high context layout registers this column. Simple cards
+    // (suggested / related lists) and non-Horizon themes never match, so we
+    // never render a stray cell.
+    if (!columns.has("high-context-card")) {
+      return columns;
+    }
+
+    // Column items render as direct children of the <tr>, so this lands as a
+    // real sibling of Horizon's <td class="hc-topic-card">.
+    columns.add(
+      "htt-thumbnail",
+      { item: ThumbnailCell },
+      { before: "high-context-card" }
+    );
+
+    return columns;
+  });
 });

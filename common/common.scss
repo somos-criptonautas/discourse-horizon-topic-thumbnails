@@ -2,7 +2,6 @@
 // <td class="hc-topic-card">. We register a sibling column before it, so the
 // thumbnail is a real <td> in the same <tr> and lays out in flow -- no absolute
 // positioning, no reserved gutter.
-
 .topic-list-item.--high-context:has(> .htt-thumbnail-cell:not(.htt-empty)) {
   // Horizon already switches this row to flex while bulk selecting, so the card
   // is known to survive it.
@@ -46,6 +45,7 @@
 
 .htt-thumbnail-cell {
   flex: 0 0 var(--htt-size, 240px);
+
   // never let the image crowd out the card on a narrow screen
   max-width: 40%;
   overflow: hidden;
