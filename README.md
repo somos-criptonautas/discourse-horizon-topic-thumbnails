@@ -7,6 +7,10 @@ Maintained by Criptonautas. Not affiliated with or endorsed by Discourse (Civili
 Adds topic thumbnails to Horizon's **high context topic cards**, on the trailing edge
 of the card, without forking or editing the Horizon theme.
 
+| Desktop | Mobile |
+|---|---|
+| ![Thumbnails on Horizon cards, desktop](docs/screenshots/thumbnails-desktop.png) | ![Thumbnails as banners, mobile](docs/screenshots/thumbnails-mobile.png) |
+
 ## How it works
 
 Horizon's high context layout registers a single topic-list column,

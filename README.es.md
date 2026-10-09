@@ -7,6 +7,10 @@ Mantenido por Criptonautas. Sin afiliación ni respaldo de Discourse (Civilized 
 Añade miniaturas de tema a las **tarjetas de tema de alto contexto** de Horizon, al final de la
 tarjeta, sin bifurcar ni editar el tema Horizon.
 
+| Escritorio | Móvil |
+|---|---|
+| ![Miniaturas en tarjetas de Horizon, escritorio](docs/screenshots/thumbnails-desktop.png) | ![Miniaturas como banner, móvil](docs/screenshots/thumbnails-mobile.png) |
+
 ## Cómo funciona
 
 El diseño de alto contexto de Horizon registra una sola columna de lista de temas,
