@@ -25,7 +25,7 @@
 
     // Inset to the card's own padding instead of bleeding to the row edges, and
     // stop short of the footer row so the reply / like counts read as default.
-    // ponytail: the clearance is a fixed value -- the footer lives inside the
+    // The clearance is a fixed value: the footer lives inside the
     // card, so its height is not visible to CSS out here. Bump
     // `--htt-footer-clearance` if Horizon's footer changes height.
     margin: var(--space-4, 1rem);
