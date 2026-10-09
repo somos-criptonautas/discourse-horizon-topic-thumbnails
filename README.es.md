@@ -2,6 +2,8 @@
 
 [ENGLISH](README.md) | **ESPAÑOL**
 
+Mantenido por Criptonautas. Sin afiliación ni respaldo de Discourse (Civilized Discourse Construction Kit, Inc.).
+
 Añade miniaturas de tema a las **tarjetas de tema de alto contexto** de Horizon, al final de la
 tarjeta, sin bifurcar ni editar el tema Horizon.
 

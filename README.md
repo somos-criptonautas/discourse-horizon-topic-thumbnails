@@ -2,6 +2,8 @@
 
 **ENGLISH** | [ESPAÑOL](README.es.md)
 
+Maintained by Criptonautas. Not affiliated with or endorsed by Discourse (Civilized Discourse Construction Kit, Inc.).
+
 Adds topic thumbnails to Horizon's **high context topic cards**, on the trailing edge
 of the card, without forking or editing the Horizon theme.
 
