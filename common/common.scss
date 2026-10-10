@@ -113,3 +113,41 @@
     aspect-ratio: auto;
   }
 }
+
+// Desktop: the separator line above tags, replies and likes is the top border of
+// Horizon's card footer. Beside a sibling thumbnail it stopped where the image began.
+// Make the row a grid and the card `display: contents`, so header and content sit
+// beside the image and the footer spans the whole row under it. To put the image on
+// the left, swap the grid columns here (the flex `order` values only matter below 40rem).
+// Bulk selecting is left on the flex layout: Horizon adds a checkbox cell then.
+@media (width >= 40rem) {
+  .topic-list-item.--high-context:not(.bulk-selecting):has(
+      > .htt-thumbnail-cell:not(.htt-empty)
+    ) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(var(--htt-size, 240px), 40%);
+    gap: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    padding: var(--space-4, 1rem);
+
+    > .hc-topic-card {
+      display: contents;
+    }
+
+    .hc-topic-card__header,
+    .hc-topic-card__content,
+    .hc-topic-card__context {
+      grid-column: 1;
+    }
+
+    > .htt-thumbnail-cell {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      max-width: none;
+      margin: 0;
+    }
+
+    .hc-topic-card__footer {
+      grid-column: 1 / -1;
+    }
+  }
+}

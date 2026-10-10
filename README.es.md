@@ -25,7 +25,9 @@ columns.add("htt-thumbnail", { item: ThumbnailCell }, { before: "high-context-ca
 
 Eso da un `<td>` real hermano de la tarjeta, y la fila se maqueta como un contenedor
 flex: primero la tarjeta y después la miniatura, sin posicionamiento absoluto.
-Intercambia los dos valores de `order` en `common/common.scss` para ponerla a la izquierda.
+Intercambia las columnas del grid en `common/common.scss` (y los dos valores de
+`order` para móviles) para ponerla a la izquierda. En escritorio la fila es un grid,
+así que el pie de la tarjeta ocupa todo el ancho bajo la imagen.
 
 `about.json` declara `modifiers.topic_thumbnail_sizes`, que es lo que hace que el
 servidor serialice `topic.thumbnails` en absoluto. El componente muestra entonces

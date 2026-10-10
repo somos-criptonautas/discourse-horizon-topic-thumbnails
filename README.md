@@ -25,7 +25,9 @@ columns.add("htt-thumbnail", { item: ThumbnailCell }, { before: "high-context-ca
 
 That gives a real `<td>` sibling of the card, and the row is laid out as a flex
 container -- card first, thumbnail after it, no absolute positioning.
-Swap the two `order` values in `common/common.scss` to put it on the left instead.
+Swap the grid columns in `common/common.scss` (and the two `order` values for
+phones) to put it on the left instead. On desktop the row is a grid, so the card's
+footer runs full width under the image.
 
 `about.json` declares `modifiers.topic_thumbnail_sizes`, which is what makes the
 server serialize `topic.thumbnails` at all. The component then displays
