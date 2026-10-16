@@ -97,25 +97,24 @@
   .topic-list-item.--high-context:has(> .htt-thumbnail-cell:not(.htt-empty)) {
     flex-direction: column;
 
-    // `order` is the cross-axis order once stacked, so keep the banner on top.
+    // Same selector as the desktop cell rule above, so these overrides win
+    // on specificity; a bare `.htt-thumbnail-cell` here would lose to it.
     > .htt-thumbnail-cell {
+      // `order` is the cross-axis order once stacked, so keep the banner on top.
       order: 0;
+      max-width: none;
+      margin: var(--space-4, 1rem) var(--space-4, 1rem) 0;
+
+      // Stacked, `--htt-size` is the banner's height and the width is the whole
+      // row, so the ratio must not claim either dimension.
+      align-self: stretch;
+      aspect-ratio: auto;
     }
 
     // Banner to header spacing becomes Horizon's own gap between card children.
     > .hc-topic-card {
       padding-top: var(--space-3, 0.75rem);
     }
-  }
-
-  .htt-thumbnail-cell {
-    max-width: none;
-    margin: var(--space-4, 1rem) var(--space-4, 1rem) 0;
-
-    // Stacked, `--htt-size` is the banner's height and the width is the whole
-    // row, so the ratio must not claim either dimension.
-    align-self: stretch;
-    aspect-ratio: auto;
   }
 }
 
