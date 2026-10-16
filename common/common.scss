@@ -86,7 +86,10 @@
 // Horizon's `sm` breakpoint is 40rem (lib/breakpoints.scss). Below it the card
 // drops its radius and runs edge to edge, and squeezing it into a narrower row
 // breaks its full-bleed footer. So don't squeeze it: turn the row into a column
-// and the thumbnail becomes a full-width banner above a full-width card.
+// and the thumbnail becomes a banner above a full-width card. The banner takes
+// the same inset as Horizon's own card content here (`padding-inline:
+// var(--space-4)`) and keeps the rounded corners, so it reads as the card's first
+// child rather than a strip glued to the screen edge.
 // `--htt-size` is the flex-basis either way, so here it is the banner's height.
 @media (width < 40rem) {
   .topic-list-item.--high-context {
@@ -100,12 +103,16 @@
     > .htt-thumbnail-cell {
       order: 0;
     }
+
+    // Banner to header spacing becomes Horizon's own gap between card children.
+    > .hc-topic-card {
+      padding-top: var(--space-3, 0.75rem);
+    }
   }
 
   .htt-thumbnail-cell {
     max-width: none;
-    margin: 0;
-    border-radius: 0;
+    margin: var(--space-4, 1rem) var(--space-4, 1rem) 0;
 
     // Stacked, `--htt-size` is the banner's height and the width is the whole
     // row, so the ratio must not claim either dimension.

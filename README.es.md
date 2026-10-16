@@ -60,7 +60,7 @@ pueden mostrar el marcador de posición un tiempo antes de que aparezcan sus im�
 | Ajuste | Por defecto | |
 |---|---|---|
 | `thumbnail_size` | `240` | Ancho de la columna de miniatura en px; la imagen ocupa toda la altura de la tarjeta y se recorta para ajustarse. |
-| `mobile_thumbnails` | `true` | Muestra miniaturas en móvil, como un banner de ancho completo. Ver más abajo. |
+| `mobile_thumbnails` | `true` | Muestra miniaturas en móvil, como un banner sobre la tarjeta. Ver más abajo. |
 | `placeholder_icon` | `comments` | Icono para temas sin imagen, para que las tarjetas mantengan un ancho uniforme. Sirve cualquier nombre de icono. Si se deja vacío, esas tarjetas ocupan el ancho completo. |
 | `enabled_categories` | *(vacío)* | Muestra miniaturas solo al navegar estas categorías. Vacío = todas las listas de temas. |
 
@@ -73,9 +73,10 @@ una franja de etiquetas con desplazamiento horizontal) y nada de eso sobrevive a
 en una fila más estrecha.
 
 Así que no se aprieta. Por debajo del punto de corte `sm` de Horizon (40rem) la fila pasa a
-`flex-direction: column`: la miniatura se convierte en un banner de ancho completo y la tarjeta
-recupera todo el ancho de la fila, exactamente como la dibuja Horizon. Ese es todo el tratamiento
-móvil: una propiedad, sin un segundo diseño que mantener.
+`flex-direction: column`: la miniatura se convierte en un banner sobre la tarjeta y la tarjeta
+recupera todo el ancho de la fila, exactamente como la dibuja Horizon. El banner lleva el mismo
+margen `var(--space-4)` que Horizon da al contenido de la tarjeta en teléfonos y conserva las
+esquinas redondeadas, así que queda alineado con el título de debajo.
 
 `--htt-size` es el flex-basis de la celda en ambas direcciones, así que es el ancho de la columna
 en escritorio y la altura del banner en móvil (140px).

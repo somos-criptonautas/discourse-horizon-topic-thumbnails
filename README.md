@@ -60,7 +60,7 @@ may show the placeholder for a while before their images appear.
 | Setting | Default | |
 |---|---|---|
 | `thumbnail_size` | `240` | Width of the thumbnail column in px; the image fills the card's height and is cropped to fit. |
-| `mobile_thumbnails` | `true` | Show thumbnails on mobile, as a full-width banner. See below. |
+| `mobile_thumbnails` | `true` | Show thumbnails on mobile, as a banner above the card. See below. |
 | `placeholder_icon` | `comments` | Icon for topics with no image, so cards keep a uniform width. Any icon name works. Leave empty and those cards run full width instead. |
 | `enabled_categories` | *(empty)* | Show thumbnails only while browsing these categories. Empty = every topic list. |
 
@@ -73,9 +73,10 @@ a horizontally scrolling tag strip -- and none of that survives being squeezed
 into a narrower row.
 
 So don't squeeze it. Below Horizon's `sm` breakpoint (40rem) the row flips to
-`flex-direction: column`: the thumbnail becomes a full-width banner and the card
-gets the whole row width back, exactly as Horizon draws it. That is the entire
-mobile treatment -- one property, no second layout to maintain.
+`flex-direction: column`: the thumbnail becomes a banner above the card and the
+card gets the whole row width back, exactly as Horizon draws it. The banner is
+inset by the same `var(--space-4)` Horizon gives the card's content on phones and
+keeps the rounded corners, so it lines up with the title below it.
 
 `--htt-size` is the cell's flex-basis in both directions, so it is the column
 width on desktop and the banner height on mobile (140px).
