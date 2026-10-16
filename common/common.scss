@@ -37,10 +37,8 @@
   }
 }
 
-// In a category the component is enabled for, the thumbnail carries the visual
-// weight and the excerpt just crowds the card. Keyed on `.htt-scoped` rather than
-// the cell being visible, so rows without an image stay consistent with the rest.
-.topic-list-item.--high-context:has(> .htt-thumbnail-cell.htt-scoped) {
+// Opt-in (`hide_excerpt`): let the thumbnail carry the card instead of the excerpt.
+.topic-list-item.--high-context:has(> .htt-thumbnail-cell.htt-hide-excerpt) {
   .hc-topic-card .topic-excerpt {
     display: none;
   }
@@ -133,6 +131,11 @@
     ) {
     display: grid;
     grid-template-columns: minmax(0, 1fr) min(var(--htt-size, 240px), 40%);
+
+    // The image spans the header and content rows. When it is the taller side,
+    // give the spare height to the content row only, so the header stays at the
+    // top instead of the extra space being split and the text floating mid-card.
+    grid-template-rows: auto 1fr;
     gap: var(--space-3, 0.75rem) var(--space-4, 1rem);
     padding: var(--space-4, 1rem);
 

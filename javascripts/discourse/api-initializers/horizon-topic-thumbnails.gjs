@@ -32,11 +32,17 @@ class ThumbnailCell extends Component {
     return !this.inScope || (!this.image && !settings.placeholder_icon);
   }
 
+  // Keyed on scope, not on the cell being visible, so imageless rows in an
+  // enabled category match the rest of the list.
+  get hidesExcerpt() {
+    return this.inScope && settings.hide_excerpt;
+  }
+
   <template>
     <td
       class="htt-thumbnail-cell
         {{if this.isEmpty 'htt-empty'}}
-        {{if this.inScope 'htt-scoped'}}"
+        {{if this.hidesExcerpt 'htt-hide-excerpt'}}"
     >
       {{#if this.isEmpty}}
         {{! nothing }}

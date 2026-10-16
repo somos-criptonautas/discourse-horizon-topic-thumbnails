@@ -2,7 +2,8 @@ en:
   theme_metadata:
     description: "Adds topic thumbnails to Horizon's high context topic cards."
     settings:
-      thumbnail_size: "Width of the thumbnail column, in pixels. The image fills the height of the card and is cropped to fit."
-      mobile_thumbnails: "Show thumbnails on mobile, as a full-width banner above the card."
+      thumbnail_size: "Width of the thumbnail column, in pixels. The image keeps a fixed ratio and is cropped to fit."
+      mobile_thumbnails: "Show thumbnails on mobile, as a banner above the card."
       placeholder_icon: "Icon shown for topics with no image, so every card keeps the same layout. Leave empty to let those cards run full width."
+      hide_excerpt: "Hide the topic excerpt on cards wherever thumbnails are shown, leaving the image to carry the card."
       enabled_categories: "Show thumbnails only while browsing these categories. Leave empty for every topic list. Subcategories are not included automatically."
