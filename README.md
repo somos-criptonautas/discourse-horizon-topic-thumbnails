@@ -27,7 +27,9 @@ That gives a real `<td>` sibling of the card, and the row is laid out as a flex
 container -- card first, thumbnail after it, no absolute positioning.
 Swap the grid columns in `common/common.scss` (and the two `order` values for
 phones) to put it on the left instead. On desktop the row is a grid, so the card's
-footer runs full width under the image.
+footer runs full width under the image, and Horizon's last-reply pill sits in that
+footer row, right before the reply and like counts, instead of taking a line of
+its own.
 
 `about.json` declares `modifiers.topic_thumbnail_sizes`, which is what makes the
 server serialize `topic.thumbnails` at all. The component then displays
@@ -78,6 +80,10 @@ So don't squeeze it. Below Horizon's `sm` breakpoint (40rem) the row flips to
 card gets the whole row width back, exactly as Horizon draws it. The banner is
 inset by the same `var(--space-4)` Horizon gives the card's content on phones and
 keeps the rounded corners, so it lines up with the title below it.
+
+To pay for the banner's height, cards with a last-reply pill drop Horizon's
+two-line "posted ... by" header and show the pill in its place. Topics without
+replies have no pill and keep the original header.
 
 `--htt-size` is the cell's flex-basis in both directions, so it is the column
 width on desktop and the banner height on mobile (140px).
@@ -131,7 +137,9 @@ larger than anything the server produced) and the category allow-list.
 
 Depends on three Horizon names: the column key `high-context-card`, and the classes
 `--high-context` and `.hc-topic-card`. If Horizon renames any of them, thumbnails
-silently stop rendering -- the card itself is unaffected. Fix is a rename in
+silently stop rendering -- the card itself is unaffected. The layout also places
+the card's parts by their `.hc-topic-card__*` classes (header, content, context,
+footer and its children); a rename there leaves that piece out of place. Fix is a rename in
 `api-initializers/horizon-topic-thumbnails.gjs` and `common/common.scss`.
 
 ## License

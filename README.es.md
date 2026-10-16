@@ -27,7 +27,9 @@ Eso da un `<td>` real hermano de la tarjeta, y la fila se maqueta como un conten
 flex: primero la tarjeta y después la miniatura, sin posicionamiento absoluto.
 Intercambia las columnas del grid en `common/common.scss` (y los dos valores de
 `order` para móviles) para ponerla a la izquierda. En escritorio la fila es un grid,
-así que el pie de la tarjeta ocupa todo el ancho bajo la imagen.
+así que el pie de la tarjeta ocupa todo el ancho bajo la imagen, y la píldora de última
+respuesta de Horizon va en esa fila del pie, justo antes de los contadores de respuestas
+y me gusta, en lugar de ocupar una línea propia.
 
 `about.json` declara `modifiers.topic_thumbnail_sizes`, que es lo que hace que el
 servidor serialice `topic.thumbnails` en absoluto. El componente muestra entonces
@@ -78,6 +80,10 @@ Así que no se aprieta. Por debajo del punto de corte `sm` de Horizon (40rem) la
 recupera todo el ancho de la fila, exactamente como la dibuja Horizon. El banner lleva el mismo
 margen `var(--space-4)` que Horizon da al contenido de la tarjeta en teléfonos y conserva las
 esquinas redondeadas, así que queda alineado con el título de debajo.
+
+Para compensar la altura del banner, las tarjetas con píldora de última respuesta quitan
+la cabecera de dos líneas "publicado ... por" de Horizon y muestran la píldora en su lugar.
+Los temas sin respuestas no tienen píldora y conservan la cabecera original.
 
 `--htt-size` es el flex-basis de la celda en ambas direcciones, así que es el ancho de la columna
 en escritorio y la altura del banner en móvil (140px).
@@ -132,7 +138,9 @@ mayores que cualquiera producido por el servidor) y la lista de categorías perm
 Depende de tres nombres de Horizon: la clave de columna `high-context-card` y las clases
 `--high-context` y `.hc-topic-card`. Si Horizon renombra alguno, las miniaturas
 dejan de renderizarse en silencio; la tarjeta en sí no se ve afectada. La solución es un renombrado en
-`api-initializers/horizon-topic-thumbnails.gjs` y `common/common.scss`.
+`api-initializers/horizon-topic-thumbnails.gjs` y `common/common.scss`. El diseño también
+coloca las partes de la tarjeta por sus clases `.hc-topic-card__*` (cabecera, contenido,
+contexto, pie y sus hijos); un renombrado ahí deja esa pieza fuera de sitio.
 
 ## Licencia
 
