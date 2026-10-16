@@ -29,9 +29,8 @@ Intercambia las columnas del grid en `common/common.scss` (y los dos valores de
 `order` para móviles) para ponerla a la izquierda. En escritorio la fila es un grid,
 así que el pie de la tarjeta ocupa todo el ancho bajo la imagen. Con `compact_last_reply`
 activado (por defecto), la píldora de última respuesta de Horizon va en esa fila del pie,
-justo antes de los contadores de respuestas y me gusta, en lugar de ocupar una línea propia;
-los contadores se alinean entonces con el borde inicial de la imagen en vez del extremo de
-la tarjeta, para quedar junto a la píldora.
+justo antes de los contadores de respuestas y me gusta, en lugar de ocupar una línea propia.
+Ambos quedan pegados al borde final de la tarjeta, bajo la imagen.
 
 `about.json` declara `modifiers.topic_thumbnail_sizes`, que es lo que hace que el
 servidor serialice `topic.thumbnails` en absoluto. El componente muestra entonces

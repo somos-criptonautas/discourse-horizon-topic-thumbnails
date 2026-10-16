@@ -29,8 +29,8 @@ Swap the grid columns in `common/common.scss` (and the two `order` values for
 phones) to put it on the left instead. On desktop the row is a grid, so the card's
 footer runs full width under the image. With `compact_last_reply` on (the default),
 Horizon's last-reply pill sits in that footer row, right before the reply and like
-counts, instead of taking a line of its own; the counts then align with the image's
-leading edge rather than the card's far edge, so they stay next to the pill.
+counts, instead of taking a line of its own. Both stay flush with the card's
+trailing edge, under the image.
 
 `about.json` declares `modifiers.topic_thumbnail_sizes`, which is what makes the
 server serialize `topic.thumbnails` at all. The component then displays
