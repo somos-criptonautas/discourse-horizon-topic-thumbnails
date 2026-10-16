@@ -27,9 +27,11 @@ Eso da un `<td>` real hermano de la tarjeta, y la fila se maqueta como un conten
 flex: primero la tarjeta y después la miniatura, sin posicionamiento absoluto.
 Intercambia las columnas del grid en `common/common.scss` (y los dos valores de
 `order` para móviles) para ponerla a la izquierda. En escritorio la fila es un grid,
-así que el pie de la tarjeta ocupa todo el ancho bajo la imagen, y la píldora de última
-respuesta de Horizon va en esa fila del pie, justo antes de los contadores de respuestas
-y me gusta, en lugar de ocupar una línea propia.
+así que el pie de la tarjeta ocupa todo el ancho bajo la imagen. Con `compact_last_reply`
+activado (por defecto), la píldora de última respuesta de Horizon va en esa fila del pie,
+justo antes de los contadores de respuestas y me gusta, en lugar de ocupar una línea propia;
+los contadores se alinean entonces con el borde inicial de la imagen en vez del extremo de
+la tarjeta, para quedar junto a la píldora.
 
 `about.json` declara `modifiers.topic_thumbnail_sizes`, que es lo que hace que el
 servidor serialice `topic.thumbnails` en absoluto. El componente muestra entonces
@@ -65,6 +67,7 @@ pueden mostrar el marcador de posición un tiempo antes de que aparezcan sus im�
 | `mobile_thumbnails` | `true` | Muestra miniaturas en móvil, como un banner sobre la tarjeta. Ver más abajo. |
 | `placeholder_icon` | `comments` | Icono para temas sin imagen, para que las tarjetas mantengan un ancho uniforme. Sirve cualquier nombre de icono. Si se deja vacío, esas tarjetas ocupan el ancho completo. |
 | `hide_excerpt` | `false` | Oculta el extracto del tema donde se muestran miniaturas. Desactivado por defecto: sin el extracto, una tarjeta es solo su título. |
+| `compact_last_reply` | `true` | Mantiene más bajas las tarjetas con miniatura reutilizando la píldora de última respuesta de Horizon. Escritorio: la píldora pasa a la fila del pie, justo antes de los contadores de respuestas y me gusta. Móvil: sustituye la línea "publicado ... por". Ver más abajo. |
 | `enabled_categories` | *(vacío)* | Muestra miniaturas solo al navegar estas categorías. Vacío = todas las listas de temas. |
 
 ### Móvil
@@ -81,9 +84,12 @@ recupera todo el ancho de la fila, exactamente como la dibuja Horizon. El banner
 margen `var(--space-4)` que Horizon da al contenido de la tarjeta en teléfonos y conserva las
 esquinas redondeadas, así que queda alineado con el título de debajo.
 
-Para compensar la altura del banner, las tarjetas con píldora de última respuesta quitan
-la cabecera de dos líneas "publicado ... por" de Horizon y muestran la píldora en su lugar.
-Los temas sin respuestas no tienen píldora y conservan la cabecera original.
+Con `compact_last_reply` activado (por defecto), las tarjetas con píldora de última respuesta
+quitan la cabecera de dos líneas "publicado ... por" de Horizon y muestran la píldora en su lugar,
+para compensar la altura del banner. Los temas sin respuestas no tienen píldora y conservan la
+cabecera original, y las insignias de estado (resuelto, cerrado) se mantienen. Desactívalo para
+dejar la cabecera y la línea de contexto de Horizon exactamente como de serie, en escritorio y
+en móvil.
 
 `--htt-size` es el flex-basis de la celda en ambas direcciones, así que es el ancho de la columna
 en escritorio y la altura del banner en móvil (140px).

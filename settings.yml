@@ -10,6 +10,9 @@ placeholder_icon:
 hide_excerpt:
   default: false
 
+compact_last_reply:
+  default: true
+
 enabled_categories:
   type: list
   list_type: category

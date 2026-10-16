@@ -42,7 +42,8 @@ class ThumbnailCell extends Component {
     <td
       class="htt-thumbnail-cell
         {{if this.isEmpty 'htt-empty'}}
-        {{if this.hidesExcerpt 'htt-hide-excerpt'}}"
+        {{if this.hidesExcerpt 'htt-hide-excerpt'}}
+        {{if settings.compact_last_reply 'htt-compact-last-reply'}}"
     >
       {{#if this.isEmpty}}
         {{! nothing }}

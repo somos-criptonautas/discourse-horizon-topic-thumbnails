@@ -115,41 +115,44 @@
     > .hc-topic-card {
       padding-top: var(--space-3, 0.75rem);
     }
+  }
 
-    // The banner already makes the card tall, so trade Horizon's two-line "posted
-    // ... by" header for the one-line last-reply pill, moved to the top. Topics
-    // without replies have no pill and keep the original header. Status badges
-    // (solved, closed) live in the header too, so it only goes when it has none.
+  // `compact_last_reply`: the banner already makes the card tall, so trade
+  // Horizon's two-line "posted ... by" header for the one-line last-reply pill,
+  // moved to the top. Topics without replies have no pill and keep the original
+  // header. Status badges (solved, closed) live in the header too, so it only
+  // goes when it has none.
+  .topic-list-item.--high-context:has(
+      > .htt-thumbnail-cell.htt-compact-last-reply:not(.htt-empty)
+    )
     > .hc-topic-card:has(.hc-topic-card__last-reply) {
-      .hc-topic-card__op {
-        display: none;
-      }
+    .hc-topic-card__op {
+      display: none;
+    }
 
-      .hc-topic-card__header:not(:has(.hc-topic-card__status)) {
-        display: none;
-      }
+    .hc-topic-card__header:not(:has(.hc-topic-card__status)) {
+      display: none;
+    }
 
-      .hc-topic-card__context {
-        order: -1;
-      }
+    .hc-topic-card__context {
+      order: -1;
     }
   }
 }
 
-// Desktop: make the row a grid and the card and its footer `display: contents`, so
-// Horizon's pieces are placed directly. Header and content sit beside the image;
-// the bottom row runs the whole width under it: tags, then the last-reply pill
-// right before the reply and like counts, instead of on a line of its own.
-// Columns: text | pill | image. The image's column also holds the counts, so the
-// pill and the counts meet at the image's leading edge. To put the image on the
-// left, mirror the columns here (the flex `order` values only matter below 40rem).
+// Desktop: the separator line above tags, replies and likes is the top border of
+// Horizon's card footer. Beside a sibling thumbnail it stopped where the image began.
+// Make the row a grid and the card `display: contents`, so header and content sit
+// beside the image and the footer spans the whole row under it. To put the image on
+// the left, swap the grid columns here and in the compact block below (the flex
+// `order` values only matter below 40rem).
 // Bulk selecting is left on the flex layout: Horizon adds a checkbox cell then.
 @media (width >= 40rem) {
   .topic-list-item.--high-context:not(.bulk-selecting):has(
       > .htt-thumbnail-cell:not(.htt-empty)
     ) {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto min(var(--htt-size, 240px), 40%);
+    grid-template-columns: minmax(0, 1fr) min(var(--htt-size, 240px), 40%);
 
     // The image spans the header and content rows. When it is the taller side,
     // give the spare height to the content row only, so the header stays at the
@@ -158,7 +161,38 @@
     gap: var(--space-3, 0.75rem) var(--space-4, 1rem);
     padding: var(--space-4, 1rem);
 
-    > .hc-topic-card,
+    > .hc-topic-card {
+      display: contents;
+    }
+
+    .hc-topic-card__header,
+    .hc-topic-card__content,
+    .hc-topic-card__context {
+      grid-column: 1;
+    }
+
+    > .htt-thumbnail-cell {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      max-width: none;
+      margin: 0;
+    }
+
+    .hc-topic-card__footer {
+      grid-column: 1 / -1;
+    }
+  }
+
+  // `compact_last_reply`: the footer goes `display: contents` too, so the last-reply
+  // pill joins the bottom row right before the reply and like counts instead of
+  // taking a line of its own. Columns: text | pill | image. The image's column also
+  // holds the counts, so the pill and the counts meet at the image's leading edge.
+  // The extra class in `:has()` outranks the rule above, so these placements win.
+  .topic-list-item.--high-context:not(.bulk-selecting):has(
+      > .htt-thumbnail-cell.htt-compact-last-reply:not(.htt-empty)
+    ) {
+    grid-template-columns: minmax(0, 1fr) auto min(var(--htt-size, 240px), 40%);
+
     .hc-topic-card__footer {
       display: contents;
     }
