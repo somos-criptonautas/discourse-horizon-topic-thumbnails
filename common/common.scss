@@ -37,13 +37,6 @@
   }
 }
 
-// Opt-in (`hide_excerpt`): let the thumbnail carry the card instead of the excerpt.
-.topic-list-item.--high-context:has(> .htt-thumbnail-cell.htt-hide-excerpt) {
-  .hc-topic-card .topic-excerpt {
-    display: none;
-  }
-}
-
 .htt-thumbnail-cell {
   flex: 0 0 var(--htt-size, 240px);
 

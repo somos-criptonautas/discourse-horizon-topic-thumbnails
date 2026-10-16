@@ -65,7 +65,6 @@ pueden mostrar el marcador de posición un tiempo antes de que aparezcan sus im�
 | `thumbnail_size` | `240` | Ancho de la columna de miniatura en px; la imagen ocupa toda la altura de la tarjeta y se recorta para ajustarse. |
 | `mobile_thumbnails` | `true` | Muestra miniaturas en móvil, como un banner sobre la tarjeta. Ver más abajo. |
 | `placeholder_icon` | `comments` | Icono para temas sin imagen, para que las tarjetas mantengan un ancho uniforme. Sirve cualquier nombre de icono. Si se deja vacío, esas tarjetas ocupan el ancho completo. |
-| `hide_excerpt` | `false` | Oculta el extracto del tema donde se muestran miniaturas. Desactivado por defecto: sin el extracto, una tarjeta es solo su título. |
 | `compact_last_reply` | `true` | Mantiene más bajas las tarjetas con miniatura reutilizando la píldora de última respuesta de Horizon. Escritorio: la píldora pasa a la fila del pie, justo antes de los contadores de respuestas y me gusta. Móvil: sustituye la línea "publicado ... por". Ver más abajo. |
 | `enabled_categories` | *(vacío)* | Muestra miniaturas solo al navegar estas categorías. Vacío = todas las listas de temas. |
 
@@ -113,11 +112,6 @@ no se reconstruye al navegar entre categorías.
 Las celdas fuera de alcance se renderizan como `.htt-empty` (`display: none`), y la fila solo
 se convierte en contenedor flex cuando hay una celda visible, así que una lista fuera de alcance se
 maqueta exactamente como el Horizon original.
-
-Con `hide_excerpt` activado, las celdas dentro de alcance también llevan `.htt-hide-excerpt`, tenga o no imagen el tema.
-Eso es lo que oculta `.topic-excerpt` en toda una categoría habilitada: basarlo en el alcance
-y no en que la celda sea visible mantiene las filas sin imagen coherentes con
-el resto de la lista.
 
 **Las subcategorías no se dan por incluidas.** Listar una categoría padre no habilita a sus
 hijas; añade cada subcategoría explícitamente. (Si quieres que los padres se propaguen, es

@@ -65,7 +65,6 @@ may show the placeholder for a while before their images appear.
 | `thumbnail_size` | `240` | Width of the thumbnail column in px; the image fills the card's height and is cropped to fit. |
 | `mobile_thumbnails` | `true` | Show thumbnails on mobile, as a banner above the card. See below. |
 | `placeholder_icon` | `comments` | Icon for topics with no image, so cards keep a uniform width. Any icon name works. Leave empty and those cards run full width instead. |
-| `hide_excerpt` | `false` | Hide the topic excerpt wherever thumbnails are shown. Off by default: without the excerpt a card is just its title. |
 | `compact_last_reply` | `true` | Keep thumbnail cards shorter by reusing Horizon's last-reply pill. Desktop: the pill moves into the footer row, right before the reply and like counts. Mobile: it replaces the "posted ... by" line. See below. |
 | `enabled_categories` | *(empty)* | Show thumbnails only while browsing these categories. Empty = every topic list. |
 
@@ -112,11 +111,6 @@ set does not rebuild when you navigate between categories.
 Out-of-scope cells render as `.htt-empty` (`display: none`), and the row only
 becomes a flex container when a visible cell is present, so a scoped-out list is
 laid out exactly as stock Horizon.
-
-With `hide_excerpt` on, in-scope cells also carry `.htt-hide-excerpt`, whether or
-not the topic has an image. That is what hides `.topic-excerpt` across an enabled
-category -- keying it on scope rather than on the cell being visible keeps
-imageless rows consistent with the rest of the list.
 
 **Subcategories are not implied.** Listing a parent category does not enable its
 children; add each subcategory explicitly. (If you want parents to cascade, that is

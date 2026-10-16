@@ -5,6 +5,5 @@ en:
       thumbnail_size: "Width of the thumbnail column, in pixels. The image keeps a fixed ratio and is cropped to fit."
       mobile_thumbnails: "Show thumbnails on mobile, as a banner above the card."
       placeholder_icon: "Icon shown for topics with no image, so every card keeps the same layout. Leave empty to let those cards run full width."
-      hide_excerpt: "Hide the topic excerpt on cards wherever thumbnails are shown, leaving the image to carry the card."
       compact_last_reply: "Keep cards with thumbnails shorter: on desktop the last-reply pill sits next to the reply and like counts instead of on its own line; on mobile it replaces the \"posted ... by\" line (topics without replies keep that line)."
       enabled_categories: "Show thumbnails only while browsing these categories. Leave empty for every topic list. Subcategories are not included automatically."

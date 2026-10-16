@@ -7,9 +7,6 @@ mobile_thumbnails:
 placeholder_icon:
   default: "comments"
 
-hide_excerpt:
-  default: false
-
 compact_last_reply:
   default: true
 
