@@ -68,9 +68,25 @@
   height: 100%;
   color: var(--primary-medium);
 
+  // No upload: a soft blend of the palette's accent into the neutral tint. Both are
+  // root color variables, so it follows the active color scheme, light or dark.
+  background: linear-gradient(
+    135deg,
+    var(--tertiary-very-low),
+    var(--primary-very-low)
+  );
+
   .d-icon {
     width: 3em;
     height: 3em;
+  }
+}
+
+// `placeholder_background` upload. Discourse hands an upload setting to SCSS as its
+// URL, or an empty string when nothing is uploaded.
+@if $placeholder_background != "" {
+  .htt-placeholder {
+    background: url("#{$placeholder_background}") center / cover no-repeat;
   }
 }
 

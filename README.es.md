@@ -64,7 +64,8 @@ pueden mostrar el marcador de posición un tiempo antes de que aparezcan sus im�
 |---|---|---|
 | `thumbnail_size` | `240` | Ancho de la columna de miniatura en px; la imagen ocupa toda la altura de la tarjeta y se recorta para ajustarse. |
 | `mobile_thumbnails` | `true` | Muestra miniaturas en móvil, como un banner sobre la tarjeta. Ver más abajo. |
-| `placeholder_icon` | `comments` | Icono para temas sin imagen, para que las tarjetas mantengan un ancho uniforme. Sirve cualquier nombre de icono. Si se deja vacío, esas tarjetas ocupan el ancho completo. |
+| `placeholder_icon` | `comments` | Icono para temas sin imagen, para que las tarjetas mantengan un ancho uniforme. Sirve cualquier nombre de icono. Si se deja vacío junto con `placeholder_background`, esas tarjetas ocupan el ancho completo. |
+| `placeholder_background` | *(ninguna)* | Imagen detrás del icono de reemplazo. Sin ella, el reemplazo es un degradado suave del acento de la paleta (`--tertiary-very-low`) hacia su tono neutro (`--primary-very-low`), así que sigue los esquemas claro y oscuro. Con una imagen subida y `placeholder_icon` vacío, la imagen sola ocupa el espacio. |
 | `compact_last_reply` | `true` | Mantiene más bajas las tarjetas con miniatura reutilizando la píldora de última respuesta de Horizon. Escritorio: la píldora pasa a la fila del pie, justo antes de los contadores de respuestas y me gusta. Móvil: sustituye la línea "publicado ... por". Ver más abajo. |
 | `enabled_categories` | *(vacío)* | Muestra miniaturas solo al navegar estas categorías. Vacío = todas las listas de temas. |
 

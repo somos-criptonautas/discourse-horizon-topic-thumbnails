@@ -64,7 +64,8 @@ may show the placeholder for a while before their images appear.
 |---|---|---|
 | `thumbnail_size` | `240` | Width of the thumbnail column in px; the image fills the card's height and is cropped to fit. |
 | `mobile_thumbnails` | `true` | Show thumbnails on mobile, as a banner above the card. See below. |
-| `placeholder_icon` | `comments` | Icon for topics with no image, so cards keep a uniform width. Any icon name works. Leave empty and those cards run full width instead. |
+| `placeholder_icon` | `comments` | Icon for topics with no image, so cards keep a uniform width. Any icon name works. Leave it and `placeholder_background` empty and those cards run full width instead. |
+| `placeholder_background` | *(none)* | Image behind the placeholder icon. Without one, the placeholder is a soft gradient of the color scheme's accent (`--tertiary-very-low`) into its neutral tint (`--primary-very-low`), so it follows light and dark schemes. With an upload and an empty `placeholder_icon`, the image alone fills the slot. |
 | `compact_last_reply` | `true` | Keep thumbnail cards shorter by reusing Horizon's last-reply pill. Desktop: the pill moves into the footer row, right before the reply and like counts. Mobile: it replaces the "posted ... by" line. See below. |
 | `enabled_categories` | *(empty)* | Show thumbnails only while browsing these categories. Empty = every topic list. |
 

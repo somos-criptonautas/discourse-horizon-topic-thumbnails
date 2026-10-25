@@ -26,10 +26,14 @@ class ThumbnailCell extends Component {
     return enabledForCategory(this.discovery.category?.id, ENABLED_CATEGORIES);
   }
 
+  get hasPlaceholder() {
+    return !!(settings.placeholder_icon || settings.placeholder_background);
+  }
+
   // Out of scope, or nothing to show: collapse the cell so the card runs the
   // full width of the row.
   get isEmpty() {
-    return !this.inScope || (!this.image && !settings.placeholder_icon);
+    return !this.inScope || (!this.image && !this.hasPlaceholder);
   }
 
   <template>
@@ -49,9 +53,11 @@ class ThumbnailCell extends Component {
           alt=""
           aria-hidden="true"
         />
-      {{else if settings.placeholder_icon}}
+      {{else if this.hasPlaceholder}}
         <span class="htt-placeholder" aria-hidden="true">
-          {{dIcon settings.placeholder_icon}}
+          {{#if settings.placeholder_icon}}
+            {{dIcon settings.placeholder_icon}}
+          {{/if}}
         </span>
       {{/if}}
     </td>

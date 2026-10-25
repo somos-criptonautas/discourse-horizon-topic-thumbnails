@@ -4,6 +4,7 @@ en:
     settings:
       thumbnail_size: "Width of the thumbnail column, in pixels. The image keeps a fixed ratio and is cropped to fit."
       mobile_thumbnails: "Show thumbnails on mobile, as a banner above the card."
-      placeholder_icon: "Icon shown for topics with no image, so every card keeps the same layout. Leave empty to let those cards run full width."
+      placeholder_icon: "Icon shown for topics with no image, so every card keeps the same layout. Leave empty (and no background uploaded) to let those cards run full width."
+      placeholder_background: "Background image for the placeholder, behind the icon. Pick something subtle so the icon stays readable. Without one, the placeholder uses a soft blend of the color palette."
       compact_last_reply: "Keep cards with thumbnails shorter: on desktop the last-reply pill sits next to the reply and like counts instead of on its own line; on mobile it replaces the \"posted ... by\" line (topics without replies keep that line)."
       enabled_categories: "Show thumbnails only while browsing these categories. Leave empty for every topic list. Subcategories are not included automatically."
